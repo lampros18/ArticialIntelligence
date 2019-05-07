@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 class Graph {
 
@@ -56,6 +57,46 @@ class Graph {
         HashMap<Character, Boolean> visited = new HashMap<>();
         // Call the recursive helper function to create the Search Tree
         DFSUtil(start, target, visited);
+    }
+
+//    Best-First-Search(Grah g, Node start)
+//    1) Create an empty PriorityQueue
+//    PriorityQueue pq;
+//    2) Insert "start" in pq.
+//            pq.insert(start)
+//    3) Until PriorityQueue is empty
+//    u = PriorityQueue.DeleteMin
+//    If u is the goal
+//            Exit
+//    Else
+//    Foreach neighbor v of u
+//    If v "Unvisited"
+//      Mark v "Visited"
+//       pq.insert(v)
+//    Mark u "Examined"
+//    End procedure
+
+    void bestFirstSearch(Node start, Node target){
+
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        HashMap<Character, Boolean> visited = new HashMap<>();
+        pq.add(start);
+
+        while(!pq.isEmpty()){
+            Node v = pq.poll();
+            searchTree.add(v);
+            if(v.getLabel() == target.getLabel())
+                return;
+            else{
+                for (Node w : retrieveSuccessors(v)) {
+                    if(visited.get(w.getLabel()) == null) {
+                        visited.put(w.getLabel(), true);
+                        pq.add(w);
+                    }
+                }
+                visited.put(v.getLabel(), true);
+            }
+        }
     }
 
     LinkedHashSet<Node> getSearchTree() {

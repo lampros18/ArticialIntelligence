@@ -1,6 +1,8 @@
 package gr.hua.dit;
 
-class Node {
+import org.jetbrains.annotations.NotNull;
+
+class Node implements Comparable<Node>{
 
     private Character label;
     private int cost;
@@ -27,4 +29,8 @@ class Node {
     }
 
 
+    @Override
+    public int compareTo(@NotNull Node o) {
+        return Integer.compare(this.cost, o.cost);
+    }
 }

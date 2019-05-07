@@ -49,8 +49,8 @@ public class Main {
         g.addEdge(I, J, 1);
         g.addEdge(J, G, 1);
 
-        g.DFS(S, G);
-
+//        g.DFS(S, G);
+        g.bestFirstSearch(S, G);
 
         System.out.println();
         System.out.println("----------------------------------------------------------");
@@ -69,7 +69,7 @@ public class Main {
         for(Node node : g.getSearchTree()){
             sum+= node.getCost();
         }
-        System.out.println("DFS cost : " + sum);
+        System.out.println("Best First search cost : " + sum);
 
     }
 }
