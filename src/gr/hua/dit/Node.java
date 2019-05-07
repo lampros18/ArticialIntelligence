@@ -1,12 +1,12 @@
 package gr.hua.dit;
 
-import org.jetbrains.annotations.NotNull;
-
-class Node implements Comparable<Node>{
+class Node {
 
     private Character label;
     private int cost;
     private int heuristicValue;
+
+    private int f;
 
     Node(Character label, int cost, int heuristicValue) {
         this.label = label;
@@ -28,9 +28,11 @@ class Node implements Comparable<Node>{
         return heuristicValue;
     }
 
+    int getF() {
+        return f;
+    }
 
-    @Override
-    public int compareTo(@NotNull Node o) {
-        return Integer.compare(this.cost, o.cost);
+    void setF(int f) {
+        this.f = f;
     }
 }

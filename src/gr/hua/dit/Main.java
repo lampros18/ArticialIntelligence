@@ -6,19 +6,19 @@ public class Main {
 
         Graph g = new Graph();
 
-        Node S = new Node('S', 0, 4 );
-        Node A = new Node('A', 0, 2 );
-        Node B = new Node('B', 0, 3 );
-        Node C = new Node('C', 0, 4 );
-        Node D = new Node('D', 0, 5 );
-        Node E = new Node('E', 0, 6 );
-        Node F = new Node('F', 0, 4 );
-        Node G = new Node('G', 0, 0 );
-        Node H = new Node('H', 0, 2 );
-        Node I = new Node('I', 0, 2 );
-        Node J = new Node('J', 0, 1 );
-        Node K = new Node('K', 0, 5 );
-        Node L = new Node('L', 0, 6 );
+        Node S = new Node('S', 0, 4);
+        Node A = new Node('A', 0, 2);
+        Node B = new Node('B', 0, 3);
+        Node C = new Node('C', 0, 4);
+        Node D = new Node('D', 0, 5);
+        Node E = new Node('E', 0, 6);
+        Node F = new Node('F', 0, 4);
+        Node G = new Node('G', 0, 0);
+        Node H = new Node('H', 0, 2);
+        Node I = new Node('I', 0, 2);
+        Node J = new Node('J', 0, 1);
+        Node K = new Node('K', 0, 5);
+        Node L = new Node('L', 0, 6);
 
 
         g.addNode(S);
@@ -50,26 +50,28 @@ public class Main {
         g.addEdge(J, G, 1);
 
 //        g.DFS(S, G);
-        g.bestFirstSearch(S, G);
+//        g.bestFirstSearchHeuristicVersion(S, G);
+//        g.bestFirstSearchCostVersion(S, G);
+        g.astar(S, G);
 
         System.out.println();
         System.out.println("----------------------------------------------------------");
 
-        for(Node node : g.getSearchTree()){
-            if(node.getLabel() == G.getLabel())
+        for (Node node : g.getSearchTree()) {
+            if (node.getLabel() == G.getLabel())
                 System.out.print(node.getLabel());
             else
-                System.out.print(node.getLabel()+"-");
+                System.out.print(node.getLabel() + "-");
         }
 
         System.out.println();
         System.out.println("----------------------------------------------------------");
 
         int sum = 0;
-        for(Node node : g.getSearchTree()){
-            sum+= node.getCost();
+        for (Node node : g.getSearchTree()) {
+            sum += node.getCost();
         }
-        System.out.println("Best First search cost : " + sum);
+        System.out.println("A* search cost : " + sum);
 
     }
 }
