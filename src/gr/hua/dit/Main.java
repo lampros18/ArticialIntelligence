@@ -1,5 +1,7 @@
 package gr.hua.dit;
 
+import java.util.Set;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -49,29 +51,107 @@ public class Main {
         g.addEdge(I, J, 1);
         g.addEdge(J, G, 1);
 
-//        g.DFS(S, G);
-//        g.bestFirstSearchHeuristicVersion(S, G);
-//        g.bestFirstSearchCostVersion(S, G);
-        g.astar(S, G);
+        GraphSearchUtils gsu = new GraphSearchUtils();
 
         System.out.println();
         System.out.println("----------------------------------------------------------");
+        System.out.println("Running DFS: ");
+        gsu.DFS(g, S, G);
 
-        for (Node node : g.getSearchTree()) {
+        Set<Node> searchTreeDFS = gsu.getSearchTree();
+
+        for (Node node : searchTreeDFS) {
             if (node.getLabel() == G.getLabel())
-                System.out.print(node.getLabel());
+                System.out.println(node.getLabel());
             else
                 System.out.print(node.getLabel() + "-");
         }
 
-        System.out.println();
-        System.out.println("----------------------------------------------------------");
-
         int sum = 0;
-        for (Node node : g.getSearchTree()) {
+        for (Node node :searchTreeDFS) {
             sum += node.getCost();
         }
-        System.out.println("A* search cost : " + sum);
+        System.out.println("DFS search cost : " + sum);
+        System.out.println("----------------------------------------------------------");
+
+
+        System.out.println();
+        System.out.println("----------------------------------------------------------");
+        System.out.println("Running Best-First-Search cost edition: ");
+
+        gsu.clearSearchTree();
+
+        gsu.bestFirstSearchCostVersion(g, S, G);
+
+        Set<Node> searchTreeBFSCost = gsu.getSearchTree();
+
+        for (Node node : searchTreeBFSCost) {
+            if (node.getLabel() == G.getLabel())
+                System.out.println(node.getLabel());
+            else
+                System.out.print(node.getLabel() + "-");
+        }
+
+        sum = 0;
+        for (Node node :searchTreeBFSCost) {
+            sum += node.getCost();
+        }
+        System.out.println("Best-First-Search cost edition : " + sum);
+
+        System.out.println("----------------------------------------------------------");
+
+
+        System.out.println();
+        System.out.println("----------------------------------------------------------");
+        System.out.println("Running Best-First-Search heuristic edition: ");
+
+        gsu.clearSearchTree();
+
+        gsu.bestFirstSearchHeuristicVersion(g, S, G);
+
+        Set<Node> searchTreeBFSHeuristic = gsu.getSearchTree();
+
+        for (Node node : searchTreeBFSHeuristic) {
+            if (node.getLabel() == G.getLabel())
+                System.out.println(node.getLabel());
+            else
+                System.out.print(node.getLabel() + "-");
+        }
+
+        sum = 0;
+        for (Node node :searchTreeBFSHeuristic) {
+            sum += node.getCost();
+        }
+        System.out.println("Best-First-Search heuristic edition : " + sum);
+
+        System.out.println("----------------------------------------------------------");
+
+
+
+        System.out.println();
+        System.out.println("----------------------------------------------------------");
+        System.out.println("Running A*: ");
+
+        gsu.clearSearchTree();
+
+        gsu.astar(g, S, G);
+
+        Set<Node> searchTreeAstar = gsu.getSearchTree();
+
+        for (Node node : searchTreeAstar) {
+            if (node.getLabel() == G.getLabel())
+                System.out.println(node.getLabel());
+            else
+                System.out.print(node.getLabel() + "-");
+        }
+
+        sum = 0;
+        for (Node node :searchTreeAstar) {
+            sum += node.getCost();
+        }
+        System.out.println("A* cost : " + sum);
+
+        System.out.println("----------------------------------------------------------");
 
     }
 }
