@@ -63,17 +63,16 @@ class Graph {
 
     /**
      * <p>This method is responsible for connecting two vertices with an edge.</p>
-     * <p>First of all it creates a new node called temp to create a new object(of type node) containing the cost of traversing from node w to node v.
+     * <p>First of all it creates a new node called temp to create a new object(of type node) containing the cost of traversing from node w to node v.</p>
      * The reason for this object creation is for two main reasons:
      * <ul>
-     * <li>Java uses call by reference when passing objects between the caller and the called method.</li>
-     * <li>A node v may be adjacent(connected) to more than one vertices.</li>
+     *  <li>Java uses call by reference when passing objects between the caller and the called method.</li>
+     *  <li>A node v may be adjacent(connected) to more than one vertices.</li>
      * </ul>
-     * Conclusion, if we do not create a new instance of the <b>v</b> node every time, we may change its cost unintentionally
+     * <p>Conclusion, if we do not create a new instance of the <b>v</b> node every time, we may change its cost unintentionally
      * due to the fact that the original node w(node that we want to add adjacent vertices) with default cost 0 has a specific address to memory
      * and each time we pass the node to the addEdge method we pass the same reference value(address).
-     * Last but not least, the adjacency list of the specified node w is obtained,and then an insertion to the adjacency list is taking place.
-     * </p>
+     * Last but not least, the adjacency list of the specified node w is obtained,and then an insertion to the adjacency list is taking place.</p>
      *
      * @param w    The node that we want to add an adjacent node to its adjacency list.
      * @param v    An adjacent node.
@@ -85,6 +84,8 @@ class Graph {
     }
 
     /**
+     * This method returns the adjacency map of the graph.
+     *
      * @return Returns a map containing for each and every node its adjacent vertices.
      */
     HashMap<Character, LinkedList<Node>> getAdjacencyMap() {

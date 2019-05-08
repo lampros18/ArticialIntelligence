@@ -2,6 +2,9 @@ package gr.hua.dit;
 
 import java.util.Set;
 
+/**
+ * This class has a main method to test all the search algorithms given the graph of our assignment.
+ */
 public class Main {
 
     public static void main(String[] args) {
