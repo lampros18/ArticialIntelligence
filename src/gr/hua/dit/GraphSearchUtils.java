@@ -71,7 +71,7 @@ class GraphSearchUtils {
      * Method that uses the Depth-First-Search algorithm.
      *
      * @param start  The starting point of the graph. From this node the algorithm will start the search.
-     * @param target The target node that we want to discover. When the algorithm visits this node the method stop searching.
+     * @param target The target node that we want to discover. When the algorithm visits this node the method stops searching.
      * @param g      A graph
      */
     void DFS(Graph g, Node start, Node target) {
@@ -84,7 +84,7 @@ class GraphSearchUtils {
      *
      * @param start   The starting point of the graph. From this node the algorithm will start the search.
      * @param target  The target node that we want to discover. When the algorithm visits this node the method stop searching.
-     * @param visited A map data structure that marks a node when we visit it. We keep track of the nodes we visited so as to avoid visiting them again.
+     * @param visited A map data structure that marks a node when we visit it. We keep track of the nodes we visited, in order to avoid visiting them again.
      * @param g       A graph
      */
     private void DFSUtil(@NotNull Node start, Node target, @NotNull HashMap<Character, Boolean> visited, Graph g) {
