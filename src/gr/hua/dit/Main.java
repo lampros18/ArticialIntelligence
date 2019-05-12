@@ -45,6 +45,7 @@ public class Main {
         g.addEdge(S, K, 2);
         g.addEdge(A, B, 2);
         g.addEdge(B, C, 2);
+        g.addEdge(B, G, 3);
         g.addEdge(C, D, 2);
         g.addEdge(D, E, 1);
         g.addEdge(D, G, 5);
@@ -125,7 +126,7 @@ public class Main {
         for (Node node :searchTreeBFSHeuristic) {
             sum += node.getCost();
         }
-        System.out.println("Best-First-Search heuristic edition : " + sum);
+        System.out.println("Best-First-Search heuristic edition cost: " + sum);
 
         System.out.println("----------------------------------------------------------");
 
